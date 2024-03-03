@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins'  ,sans-serif;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    background: #4E4848;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px 5px 30px;
+}
+
+nav .icon img {
+    width: 50px;
+}
+
+nav ol {
+    display: flex;
+    list-style: none;
+    margin: auto 0;
+}
+
+nav ol li {
+    margin: 0 30px;
+}
+
+nav ol li a {
+    position: relative;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    padding: 5px;
+}
+
+nav ol li a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: .3s;
+} 
+
+nav ol li a:hover::before {
+    width: 100%;
+
+}
+
+nav .search_box {
+    display: flex;
+    margin: auto 0;
+    height: 35px;
+    line-height: 35px;
+}
+
+nav .search_box input {
+    border: 1px solid black;
+    border-radius: 10px;
+    outline: none;
+    background: #fff;
+    height: 100%;
+    padding: 0 10px;
+    font-size: 20px;
+    width: 300px;
+}
+
+
+
+nav .search_box span::after {
+    height: 100%;
+    width: 0%;
+    content: '';
+    background-color: orange;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: .3s ;
+}
+
+nav .search_box span:hover:after {
+    width: 100%;
+}
