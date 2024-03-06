@@ -14,7 +14,7 @@ nav {
     position: relative;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 30px 5px 30px;
+    padding: 15px 30px 5px 30px;
 }
 
 nav .icon img {
@@ -92,3 +92,20 @@ nav .search_box span::after {
 nav .search_box span:hover:after {
     width: 100%;
 }
+
+.button--create {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #fc9630;
+    font-size: 15px;
+    font-family: Poppins, sans-serif;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.button--create:hover {
+    background-color: #ff7f00;
+    border: 2px solid black;
+}
+
