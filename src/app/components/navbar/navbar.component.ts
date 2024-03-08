@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog'
-import { RegisterComponent } from '../register/register.component';
+import { Router } from '@angular/router';
  
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [MatDialogModule],
+  imports: [],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  constructor(private dialogRef: MatDialog) {}
 
-  openRegistrationModal() {
-    this.dialogRef.open(RegisterComponent);
+  constructor (private router: Router) {}
+
+  redirectToRegistrationForm() {
+    this.router.navigate(['/register'])
   }
 
 }
