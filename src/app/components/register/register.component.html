@@ -1,0 +1,46 @@
+<div class="body-wrapper">
+    <div class="wrapper">
+        <form #createUserForm="ngForm" (ngSubmit)="onSubmit(createUserForm.value)">
+            <h1>Registration</h1>
+            <div class=" input-box">
+            <div class="input-field">
+                <input type="text" placeholder="First Name" name="first_name" ngModel required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-field">
+                <input type="text" placeholder="Last Name" name="last_name" ngModel required>
+                <i class='bx bxs-user'></i>
+            </div>
+    </div>
+
+    <div class="input-box">
+        <div class="input-field">
+            <input type="text" placeholder="Username" name="username" ngModel required>
+            <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-field">
+            <input type="email" placeholder="E-mail" name="email" ngModel required>
+            <i class='bx bxs-phone'></i>
+        </div>
+    </div>
+
+    <div class="input-box">
+        <div class="input-field">
+            <input type="text" placeholder="Phone Number" name="phone_number" ngModel required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+        <div class="input-field">
+            <input type="password" placeholder="Password" name="password" ngModel required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+    </div>
+
+    <div class="inputs">
+        <label><input type="checkbox" name="profile_type" [(ngModel)]="isArtist">Are you an Artist?</label>
+    </div>
+
+    <label><a href="login.html">Already have an account?</a></label>
+    <button type="submit" class="btn">Start Listening</button>
+    </form>
+</div>
+</div>
