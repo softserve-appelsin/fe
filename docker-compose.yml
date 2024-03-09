@@ -4,4 +4,11 @@ services:
   frontend:
     build:
       context: .
-        # TODO: here
+    restart: unless-stopped
+    command: ng serve --host 0.0.0.0
+    volumes:
+      - ./:/soft_serve
+    ports:
+      - 4200:4200
+    env_file:
+      - ./.env.dev
