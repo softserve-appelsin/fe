@@ -1,5 +1,5 @@
 # From https://dev.to/rodrigokamada/creating-and-running-an-angular-application-in-a-docker-container-40mk
-# TODO: Gen node version
+# TODO: Get node version
 FROM node:alpine
 
 WORKDIR /usr/src/app

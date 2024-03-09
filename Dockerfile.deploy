@@ -1,5 +1,5 @@
 # From https://dev.to/rodrigokamada/creating-and-running-an-angular-application-in-a-docker-container-40mk
-# TODO: Gen node version
+# TODO: node version
 # TODO: broken?
 FROM node:alpine as build
 
