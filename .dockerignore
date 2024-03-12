@@ -1,0 +1,17 @@
+# General
+.git
+Dockerfile*
+docker-compose.yml
+*.sqlite3
+*.md
+.env*
+
+# Node
+**/node_modules/
+**/dist
+.git
+npm-debug.log
+.coverage
+.coverage.*
+.env
+.aws
