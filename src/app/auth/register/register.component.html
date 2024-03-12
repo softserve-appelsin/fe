@@ -1,9 +1,0 @@
-<h1> Register Page </h1>
-
-<form #createUser="ngForm" (ngSubmit)="onSubmit(createUser.value)">
-    <input type="text" name="username" ngModel placeholder="username">
-    <input type="password" name="password" ngModel placeholder="password">
-    <label><input type="checkbox" name="profile_type" [(ngModel)]="isArtist">Are you an Artist?</label>
-    <button type="submit">Start Listening</button>
-
-</form>
