@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { AuthService } from '../../services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -16,20 +17,14 @@ export class LoginComponent {
 
   @ViewChild('login') login!: NgForm
 
-  constructor (private http: HttpClient, private router: Router) {}
-
-  baseUrl: string = 'http://0.0.0.0:8000/';
+  constructor (private router: Router, private authService: AuthService) {}
 
   onSubmit(data: any) {
-    this.http.post<any>(this.baseUrl + 'api/v1/token', data).subscribe( (response) => {
-      if (response.success ===  true) {
-        localStorage.setItem('accessToken', response.tokens.access);
-        localStorage.setItem('refreshToken', response.tokens.refresh)
-        this.router.navigate(['/dashboard']);
-      }
-      console.log('response', response);
-    }) 
-    console.warn('data', data)
+    this.authService.onLogin(data);
+    console.log('data from login component', data);
+    this.login.reset();
+    this.router.navigate(['/dashboard'])
+    
   }
 
 }
