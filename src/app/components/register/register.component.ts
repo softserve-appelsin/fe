@@ -3,6 +3,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -14,9 +17,8 @@ export class RegisterComponent {
 
   @ViewChild('createUserForm') createUserForm!: NgForm;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router  ) { }
 
-  baseUrl: string = 'http://0.0.0.0:8000';
   isArtist: boolean = false;
 
 
@@ -26,9 +28,10 @@ export class RegisterComponent {
 
     data.profile_type = profileType;
 
-    this.http.post(this.baseUrl + '/api/v1/create_user', data).subscribe((result) => {
+    this.http.post(this.authService.baseUrl + '/api/v1/create_user', data).subscribe((result) => {
       console.warn('result', result);
       this.createUserForm.reset();
+      this.router.navigate(['/dashboard'])
     });
 
     console.warn(data);
