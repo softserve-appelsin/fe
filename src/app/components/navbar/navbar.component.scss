@@ -5,7 +5,7 @@ nav {
     position: relative;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px 5px 30px;
+    padding: 15px 40px 5px 30px;
     font-family: Poppins, sans-serif;
 }
 
@@ -17,37 +17,46 @@ nav .icon img {
 nav ol {
     display: flex;
     list-style: none;
-    margin: auto 0;
+    margin: 0;
 }
 
 nav ol li {
     margin: 0 30px;
+    display: block;
+    position: relative;
 }
 
 nav ol li a {
+    display: block;
     position: relative;
     color: #fff;
     font-size: 20px;
     text-decoration: none;
     text-transform: capitalize;
     letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+ol li ul.dropdown li {
+    display: inline-block;
+    background: #4E365B;
     padding: 5px;
 }
 
-nav ol li a::before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #fff;
-    transition: .3s;
-} 
-
-nav ol li a:hover::before {
+ol li ul.dropdown {
     width: 100%;
+    position: absolute;
+    z-index: 999;
+    display: none;
+    right: 70px;
+}
 
+ol li a:hover {
+    background: #4E365B;
+}
+
+ol li:hover ul.dropdown {
+    display: block;
 }
 
 nav .search_box {
@@ -67,50 +76,3 @@ nav .search_box input {
     font-size: 20px;
     width: 300px;
 }
-
-
-
-nav .search_box span::after {
-    height: 100%;
-    width: 0%;
-    content: '';
-    background-color: orange;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: .3s ;
-}
-
-nav .search_box span:hover:after {
-    width: 100%;
-}
-
-.button--create {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: #fc9630;
-    font-size: 15px;
-    font-family: Poppins, sans-serif;
-    transition: background-color 0.3s ease;
-    margin-bottom: 5px;
-}
-
-.button--login {
-    border: 1px solid #fc9630;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: black;
-    font-size: 15px;
-    font-family: Poppins, sans-serif;
-    transition: background-color 0.3s ease;
-    margin-bottom: 5px;
-    color:  #fff;
-}
-
-.button--create:hover {
-    background-color: #ff7f00;
-    border: 2px solid black;
-}
-
