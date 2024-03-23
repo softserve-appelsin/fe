@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router} from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,16 +15,31 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class LoginComponent {
 
-  @ViewChild('login') login!: NgForm
+  form: any = {
+    username: null,
+    password: null
+  };
 
-  constructor (private router: Router, private authService: AuthService) {}
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
 
-  onSubmit(data: any) {
-    this.authService.onLogin(data);
-    console.log('data from login component', data);
-    this.login.reset();
-    this.router.navigate(['/dashboard'])
-    
+  constructor(private authService: AuthService, private router: Router) { }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 
-}
+  onSubmit() {
+    const { username, password } = this.form;
+
+    this.authService.login(username, password).subscribe({
+      next: data => {
+        console.log(data);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.reloadPage();
+      }
+    })
+  }
+};
