@@ -14,28 +14,31 @@ import { Router } from '@angular/router';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
+  form: any = {
+    first_name: null,
+    last_name: null,
+    username: null,
+    email: null,
+    phone_number: null,
+    password: null,
+    isArtist: false
+  };
 
-  @ViewChild('createUserForm') createUserForm!: NgForm;
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
-  constructor(private http: HttpClient, private authService: AuthService, private router: Router  ) { }
+  constructor(private authService: AuthService) { }
 
-  isArtist: boolean = false;
+  onSubmit(): void {
+    const { first_name, last_name, username, email, phone_number, password, isArtist } = this.form;
 
-
-  onSubmit(data: any) {
-
-    const profileType = this.isArtist ? 'Artist' : 'Listener';
-
-    data.profile_type = profileType;
-
-    this.http.post(this.authService.baseUrl + '/api/v1/create_user', data).subscribe((result) => {
-      console.warn('result', result);
-      this.createUserForm.reset();
-      this.router.navigate(['/dashboard'])
-    });
-
-    console.warn(data);
-    console.log(this.isArtist);
+    this.authService.register(first_name, last_name, username, email, phone_number, password, isArtist).subscribe({
+      next: data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      }
+    })
   }
-
 }
